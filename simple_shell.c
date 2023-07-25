@@ -54,15 +54,18 @@ int main()
 void path_finder( char **cmd)
 {
 	int i = 0;
-	char *path, *token;
-	int j, k = 0;
+	char *path, *token, *p_c, *dp;;
+	int j, k = 0, status;
+	struct stat buf;
 	
 
 	/* loop through the environ array */
 	for (i = 0; environ[i] !=NULL; i++)
 	{
 		/*printf("%d %s \n", i,environ[i]);*/
+
 		/* compare PATH and environ[i] first four characters*/
+
 		if (strncmp("PATH", environ[i], 4) == 0)
 		{
 			path = malloc(sizeof(char) * (strlen(environ[i]) - 4));
@@ -77,12 +80,28 @@ void path_finder( char **cmd)
 			
 			/* to separate the path dirs by : and . */
 			token = strtok(path, ":");
-			printf("%s", token);
+			p_c = malloc(szeof(char) * 1024);
+
+			while (token != NULL)
+
+
+			
 			while (token != NULL)
 			{
-				token = strcat(token, "/");
-				token = strcat(token, cmd[0]);
-				token = strtok(NULL, ":");
+				dp = strdup(token);
+				p_c = strcat(dp. "/");
+				p_c =strcat(p_c, cmd[0]);
+				
+				if(stat(p_c, &buf) ==0)
+				{
+					if(fork() !=0)
+						wait(&status);
+					else
+						execve(p_c, cmd, environ);
+					break;
+
+				}
+				token=strtok(NULL, ":");
 			}
 		}
 
