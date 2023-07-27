@@ -1,4 +1,4 @@
-#ifndef MAIN_H
+/*#ifndef MAIN_H
 #define MAIN_H
 
 #include <string.h>
@@ -7,4 +7,4 @@
 #include <unistd.h>
 
 
-#endif
+#endif*/
